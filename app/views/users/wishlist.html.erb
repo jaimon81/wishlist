@@ -1,0 +1,37 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+  $(".save_but").click(function() {
+    $("#wishform").ajaxForm({ target: "#wishDiv" }).submit(); // This line will display the ajax response in "wishDiv" div.
+  });
+  });
+</script>
+
+
+
+<h3>Add your wishes</h3>
+<span style="float:right;"><a href="/users/signout" style="text-decoration: none;"><input type="button" value="Logout" /></a></span>
+<span style="float:right;"><a href="/users/edit?id=<%=@user_id%>" style="text-decoration: none;"><input type="button" value="Profile" /></a></span>
+<%=form_tag({:controller => "users", :action => "save_wish"}, :method => "post", :id => "wishform") do %>
+  My Wish: <%= text_area_tag "comment" %>
+  <input type="hidden" value="<%=@user_id%>" name="user_id"/>
+  <input type="button" value="Save"  class="save_but"/>
+<%end%>
+
+<br/>
+<h3>Wish List</h3>
+<div id="wishDiv">
+  <table style="border:1px solid black;width:50%;text-align:center;">
+    <tr>
+      <th>User Name</th>
+      <th>Wishes</th>
+    </tr>
+
+    <%@wishlist.each do |w|%>
+      <tr>
+        <td><%=w.user.user_name%></td>
+        <td><%=w.wish%></td>
+      </tr>
+    <%end%>
+
+  </table>
+</div>

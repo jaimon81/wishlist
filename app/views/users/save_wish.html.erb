@@ -1,0 +1,14 @@
+<table style="border:1px solid black;width:50%;text-align:center;">
+  <tr>
+    <th>User Name</th>
+    <th>Wishes</th>
+  </tr>
+
+  <%@wishlist.each do |w|%>
+    <tr>
+      <td><%=w.user.user_name%></td>
+      <td><%=w.wish%></td>
+    </tr>
+  <%end%>
+
+</table>
