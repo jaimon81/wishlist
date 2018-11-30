@@ -1,16 +1,23 @@
 class UsersController < ApplicationController
 
    def login
-puts 1111
-     usrs = User.all
-     usrs.each do |u|
-        puts u.id
-        puts u.user_name
-        puts u.email
-        puts u.password
-        puts "-----"
-        # u.destroy
-    end
+# puts 1111
+#      usrs = User.all
+#      usrs.each do |u|
+#         puts u.id
+#         puts u.user_name
+#         puts u.email
+#         puts u.password
+#         puts "-----"
+#         u.destroy
+#     end
+#     wishs = Wish.all
+#     wishs.each do |w|
+#        puts w.id
+#        puts w.wish
+#        puts "-----"
+#       w.destroy
+#    end
       render :action => "login", :layout => false
     end
 
@@ -27,8 +34,6 @@ puts 1111
           redirect_to :action => 'login'
         else
           @user.password = ""
-          @user.email = ""
-          # @errorMsg = @user.errors.first[1] unless @user.errors.full_messages[0].nil?
           render :action => "signup"
         end
     end

@@ -9,7 +9,8 @@
     $("#user_email").removeClass("form-error");
     $("#user_password").removeClass("form-error");
     $("#user_password_confirmation").removeClass("form-error");
-
+    document.getElementById("errorDiv").style.display="none";
+    
   	if ($uname == "") {
   		$("#user_user_name").addClass("form-error");
   		return false;
@@ -26,8 +27,21 @@
   		$("#user_password_confirmation").addClass("form-error");
   		return false;
   	}
+
+    var re = /(?=.*[a-z])(?=.*[A-Z])/;
+    if(re.test($pwd))
+    {
+      return true;
+    }
+    else
+    {
+    document.getElementById("errorDiv").style.display="block";
+    document.getElementById("errorDiv").innerHTML="Password should have at least one upper and lower case letter.";
+    return false;
+    }
   	return true;
   }
+
 </script>
 <style>
   .form-error {
@@ -38,7 +52,8 @@
 <h3>User Registration Form</h3>
 <div style="border:1px solid black;padding:5px;">
  <%= form_for :user,:url => { :action => 'register_user'}  do |f|%>
-<div class="form-error">
+ <p id="errorDiv" style="color:red;display:none;"></p>
+<div class="form-error" >
   <ul>
        <% @user.errors.full_messages.each do |msg| %>
            <li><%= msg %></li>
