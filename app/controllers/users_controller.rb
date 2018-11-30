@@ -1,23 +1,6 @@
 class UsersController < ApplicationController
 
    def login
-# puts 1111
-#      usrs = User.all
-#      usrs.each do |u|
-#         puts u.id
-#         puts u.user_name
-#         puts u.email
-#         puts u.password
-#         puts "-----"
-#         u.destroy
-#     end
-#     wishs = Wish.all
-#     wishs.each do |w|
-#        puts w.id
-#        puts w.wish
-#        puts "-----"
-#       w.destroy
-#    end
       render :action => "login", :layout => false
     end
 
